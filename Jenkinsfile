@@ -6,7 +6,7 @@ node {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = tool 'Maven'
+      mvnHome = tool 'mvn 3.6.1'
    }
    stage('Build') {
       // Run the maven build
@@ -19,10 +19,6 @@ node {
    }
     stage('artifact') {
       
-      archive 'target/*.war'
+      archiveArtifacts 'target/*.war'
    }
-   stage ('deploy'){
-   echo 'deployment started'
-    bat '''copy C:\\Users\\Madhu\\.jenkins\\workspace\\emexo_pipe4\\target\\*.war F:\\softwares\\apache-tomcat-7.0.53\\webapps\\'''
-  }
 }
